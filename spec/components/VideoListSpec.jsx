@@ -10,16 +10,18 @@ describe('VideoList', function() {
   it('should be a stateless functional component', function() {
     expect(React.Component.isPrototypeOf(VideoList)).to.be.false;
   });
-
+  // console.log('hi');
   it('should render one `VideoListEntry` when given one video', function() {
     var shallowRenderer = new ReactShallowRenderer();
 
     var oneFakeVideo = window.fakeVideoData.slice(-1);
+    console.log(window.fakeVideoData);
     shallowRenderer.render(
       <VideoList videos={oneFakeVideo} />
     );
 
     var videoList = shallowRenderer.getRenderOutput();
+    // console.log('hi', videoList.props.children);
     expect(videoList.props.children).to.have.length(1);
     videoList.props.children.forEach(child => expect(child.type).to.equal(VideoListEntry));
   });

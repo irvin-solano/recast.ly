@@ -70,3 +70,5 @@ window.fakeVideoData = [{
     }
   }
 }];
+
+export default window.fakeVideoData;

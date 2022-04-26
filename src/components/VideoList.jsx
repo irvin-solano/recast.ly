@@ -5,8 +5,8 @@ var VideoList = (props) => {
   return (
 
     <div className="video-list">
-      {props.videos.map(function(elem, index) {
-        console.log(index);
+      {props.videos.map((elem, index) => {
+        // console.log(index);
         return <VideoListEntry video={elem} key={index} value={index} handleClick={props.handleClick}/>;
       })}
     </div>

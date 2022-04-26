@@ -14,19 +14,23 @@ var getURLSearchParams = function(url) {
 
 var hasSameShape = function(objectOne, objectTwo) {
   if (Object.keys(objectOne).length !== Object.keys(objectTwo).length) {
+    console.log(Object.values(objectOne), Object.values(objectTwo),'keylengths are not equal');
     return false;
   }
 
   for (var key in objectOne) {
     if (!key in objectTwo) {
+      console.log('key doesnt exist');
       return false;
     }
 
     if (typeof objectOne[key] !== typeof objectTwo[key]) {
+      console.log('typeof key failing');
       return false;
     }
 
     if (Object.prototype.toString.call(objectOne[key]) === '[object Object]') {
+      console.log();
       return hasSameShape(objectOne[key], objectTwo[key]);
     }
   }
@@ -72,6 +76,7 @@ describe('searchYouTube', function() {
     xhr.restore();
 
     searchYouTube('react', (data) => {
+      console.log('our data is here', data);
       expect(hasSameShape(data, exampleVideoData)).to.be.true;
       done();
     });
